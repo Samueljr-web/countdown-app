@@ -8,8 +8,8 @@ const {
 const router = express.Router();
 
 //create a particular event
-router.post('/', createCountdown);
-router.patch('/edit/:id', editCountdown);
-router.delete('/delete/:id', deleteCountdown);
-router.get('/:title', getCountdown);
+router.post('/:hash', createCountdown);
+router.patch('/edit/:hash/:id', editCountdown);
+router.delete('/delete/:hash/:id', deleteCountdown);
+router.get('/:id/:title', getCountdown);
 module.exports = router;
