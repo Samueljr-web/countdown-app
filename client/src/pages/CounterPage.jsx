@@ -61,8 +61,8 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
-    <div className={isDanger ? 'countdown mr-8 danger' : 'countdown mr-8'}>
-      <div className='flex justify-center items-center block xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 bg-green-600 text-center rounded-lg sm:text-6xl text-3xl text-white'>
+    <div className='mr-8'>
+      <div className={`${isDanger ? 'danger' : ''} flex justify-center items-center block xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 bg-green-600 text-center rounded-lg sm:text-6xl text-3xl text-white`}>
         <p className=''>{value}</p>
       </div>
       <span className='mt-6 sm:text-2xl'>{type}</span>
