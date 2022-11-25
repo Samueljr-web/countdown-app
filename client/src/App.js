@@ -4,6 +4,13 @@ import HomePage from "./pages/HomePage";
 import CounterPage from "./pages/CounterPage";
 
 function App() {
+  //create and save hash to local storage to identify user.
+  const hash = Math.random().toString(36).substring(7);
+  if (localStorage.getItem('userHash')) {
+    // allow edit access.
+  } else {
+    localStorage.setItem('userHash', hash);
+  }
 
   // use API call to get user inputted time and date.
   const userDate = (new Date("2022-11-30"));
