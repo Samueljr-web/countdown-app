@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', HomepageRouter);
-app.use('/api/v1/countdown', countdownRouter);
+app.use('/api/v1/countdown', cors(), countdownRouter);
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
