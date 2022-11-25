@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CounterPage from "./pages/CounterPage";
-import { useEffect } from "react";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   // use API call to get user inputted time and date.
   const userDate = new Date("2022-11-30");
