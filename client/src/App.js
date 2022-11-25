@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // use API call to get user inputted time and date.
-  const userDate = new Date("2022-11-30");
   useEffect(() => {
     const hash = Math.random().toString(36).substring(7);
     const hasher = localStorage.getItem("hash");
@@ -33,7 +32,7 @@ function App() {
           <Route path="/" element={<HomePage form={form} setForm={setForm} resp={resp} setResp={setResp} />} />
           <Route
             path="/countdown"
-            element={<CounterPage targetDate={userDate} resp={resp} />}
+            element={<CounterPage resp={resp} form={form} />}
           />
         </Routes>
       </Router>
