@@ -1,10 +1,16 @@
 import './App.css';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from './pages';
 
 function App() {
   return (
-    <div className="App">
-      <h2 className='text-red-500'>countdown timer app</h2>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/' element={Home} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
