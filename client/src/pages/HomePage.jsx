@@ -26,7 +26,7 @@ const HomePage = () => {
  
 
         e.preventDefault();
-        if (form.title === "" && form.date === "" && form.time === "") {
+        if (form.title === "") {
             toast.error("input fields cannot be empty");
             return false;
         } else {
