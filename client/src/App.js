@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
+import {useState} from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CounterPage from "./pages/CounterPage";
@@ -16,14 +17,23 @@ function App() {
     }
     return;
   }, []);
+
+  const [form, setForm] = useState({
+    title: "",
+    date: "",
+    time: ""
+  })
+
+  const [resp, setResp] = useState({});
+
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage form={form} setForm={setForm} resp={resp} setResp={setResp} />} />
           <Route
             path="/countdown"
-            element={<CounterPage targetDate={userDate} />}
+            element={<CounterPage targetDate={userDate} resp={resp} />}
           />
         </Routes>
       </Router>
