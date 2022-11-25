@@ -12,6 +12,8 @@ const HomePage = ({ form, setForm, resp, setResp }) => {
         });
     };
 
+    console.log(resp);
+
      const submitHandler = async(e) => {
         e.preventDefault();
         if (form.title === "" && form.date === "" && form.time === "") {
@@ -56,7 +58,7 @@ const HomePage = ({ form, setForm, resp, setResp }) => {
              onChange={handleChange} 
              name='time'
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
-          <button onClick={`/countdown`} type='submit' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
+          <a href={`countdown`}><button type='submit' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button></a>
         </form>
        </div>
       </div>
@@ -64,4 +66,4 @@ const HomePage = ({ form, setForm, resp, setResp }) => {
   )
 }
 
-export default HomePage
+export default HomePage;
