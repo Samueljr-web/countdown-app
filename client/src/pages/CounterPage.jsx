@@ -6,9 +6,12 @@ import twitter from '../icons/twitter.svg';
 import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
+import axios from 'axios';
 
-export default function CounterPage ({ targetDate }) {
+export default function CounterPage ({ targetDate, resp }) {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
+
+  console.log(resp);
 
   if (days + hours + minutes + seconds <= 0) {
     return <ExpiredNotice />;
