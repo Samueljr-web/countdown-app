@@ -2,12 +2,14 @@ require('express-async-errors');
 require('dotenv').config();
 const express = require('express');
 const db = require('./database/db');
+const cors = require('cors');
 const HomepageRouter = require('./routes/homepageRoutes');
 const notFound = require('./middlewares/notFound');
 const errorHandlerMiddleware = require('./middlewares/errorHandler');
 const countdownRouter = require('./routes/countdown');
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
