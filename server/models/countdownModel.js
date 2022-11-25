@@ -5,7 +5,6 @@ const countDownSchema = new Schema(
     title: {
       type: String,
       required: [true, 'Please provide a title to your countdown'],
-      unique: true,
     },
     date: {
       type: String,
