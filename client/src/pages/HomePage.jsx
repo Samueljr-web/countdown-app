@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
@@ -18,9 +19,15 @@ const HomePage = () => {
         });
     };
      const submitHandler = async(e) => {
+        const btn = document.getElementById('submit-btn')
+        // setTimeout(() => {
+        //   btn.innerHTML = 'loading...'
+        // },[5000])
+ 
+
         e.preventDefault();
         if (form.title === "" && form.date === "" && form.time === "") {
-            alert("input fields cannot be empty");
+            toast.error("input fields cannot be empty");
             return false;
         } else {
           const hash = localStorage.getItem('hash')
@@ -28,7 +35,7 @@ const HomePage = () => {
             .then((response) => {
               console.log(response.data);
             });
-            alert("success");
+            toast.success("event created");
         }
     };
 
@@ -37,7 +44,7 @@ const HomePage = () => {
       <div>
         <img src={Logo} alt='logo' />
       </div>
-
+      <ToastContainer />
       <div className='flex items-center min-h-screen md:space-x-5 space-y-2 justify-center md:flex-row flex-col'>
        <div className='md:w-[410px] w-[250px] h-[20rem]'>
          <img src={ClockBg} alt='bg' className='md:w-[401px] w-[26rem] md:h-[15rem] h-[10rem] block mx-auto' />
@@ -55,13 +62,15 @@ const HomePage = () => {
              type='date'
              onChange={handleChange}  
              name='date'
+             required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
           <input 
              type='time'
              onChange={handleChange} 
              name='time'
+             required
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
-          <button type='submit' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
+          <button type='submit' id='submit-btn' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
         </form>
        </div>
       </div>
