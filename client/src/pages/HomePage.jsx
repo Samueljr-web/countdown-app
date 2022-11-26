@@ -6,7 +6,6 @@ import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
-
 function HomePage ({setRespData, respData, dataID, dataTitle}) {
   const [form, setForm] = useState({
     title: "",
@@ -46,6 +45,7 @@ function HomePage ({setRespData, respData, dataID, dataTitle}) {
                 btn.innerHTML = 'Create countdown'
                 btn.disabled = false;
                 // window.location = "/countdown";
+                //chnaged here
                 navigate(`/${dataID}/${dataTitle}`)
               }, 1000)
              }).catch(err => {

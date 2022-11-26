@@ -15,6 +15,7 @@ function App() {
     return;
   }, []);
   const [respData, setRespData] = useState({})
+
   var ID = respData._id;
   var title = respData.title;
   console.log(ID);
