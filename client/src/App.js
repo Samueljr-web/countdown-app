@@ -5,6 +5,11 @@ import HomePage from "./pages/HomePage";
 import CounterPage from "./pages/CounterPage";
 import "react-toastify/dist/ReactToastify.css";
 
+//test
+import axios from 'axios';
+// import { getURL } from './constants/index.js'
+//end
+
 function App() {
   useEffect(() => {
     const hash = Math.random().toString(36).substring(7);
@@ -20,6 +25,13 @@ function App() {
   var title = respData.title;
   console.log(ID);
   console.log(title)
+
+  //test
+  axios.get("https://lets-countdown-production.up.railway.app/countdown/63824606e0934fd3624c3af3/title")
+  .then((response) => {
+    console.log(response.data);
+  })
+  //end
 
   return (
     <>
