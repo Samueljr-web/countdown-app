@@ -8,14 +8,14 @@ import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
 
-export default function CounterPage () {
+export default function CounterPage ({respData}) {
   const [resp, setResp] = useState({});
   
   const { date, time, title } = resp;
   const respDate = date;
   const respTime = time;
   const respTitle = title;
-
+  console.log(respData)
 
   const targetDate = new Date(`${respDate}, ${respTime}`);
 
