@@ -1,19 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../constants/'
 import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
-const baseURL = 'https://lets-countdown-production.up.railway.app/api/v1/countdown/'
 
-const HomePage = ({ form, setForm, resp, setResp }) => {
+function HomePage ({setRespData, respData}) {
+  const [form, setForm] = useState({
+    title: "",
+    date: "",
+    time: "",
+  });
+
+  const navigate = useNavigate();
+
+
    const handleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value,
         });
     };
-
 
      const submitHandler = async(e) => {
         const btn = document.getElementById('submit-btn')
@@ -23,25 +32,33 @@ const HomePage = ({ form, setForm, resp, setResp }) => {
         e.preventDefault();
         if (form.title === "") {
             toast.error("input fields cannot be empty");
+            btn.innerHTML = 'Create countdown'
+            btn.disabled = false;
             return false;
         } else {
           const hash = localStorage.getItem('hash')
-          await axios.post(baseURL + hash, { ...form })
+          await axios.post(`${baseURL}countdown/` + hash, { ...form })
             .then((response) => {
-              setResp(response.data);
-              console.log(response.data);
+                console.log(response.data);
+                setRespData(response.data);
+                toast.success("event created");
+                 setTimeout(() => {
+                btn.innerHTML = 'Create countdown'
+                btn.disabled = false;
+                // window.location = "/countdown";
+                navigate('/countdown')
+              }, 1000)
+             }).catch(err => {
+                toast.error('error creating event')
+                console.log(err);
+                  setTimeout(() => {
+                  btn.innerHTML = 'Create countdown'
+                  btn.disabled = false
+              }, 100)
             });
-            toast.success("event created");
-           setTimeout(() => {
-            btn.innerHTML = 'Create countdown'
-            btn.disabled = false;
-            window.location = "/countdown";
-          }, 5000)
-          
-        
         }
     };
-
+    console.log(respData)
   return (
     <div className=''>
       <div>
@@ -54,7 +71,7 @@ const HomePage = ({ form, setForm, resp, setResp }) => {
          <h2 className='lg:text-[2rem] md:text-[1.5rem] text-[1.2rem] font-bold md:leading-[39px] leading-8'>Create countdowns for your events fast, easy and quick</h2>
        </div>
        <div className='flex flex-col justify-center rounded-[8px] h-[21rem] p-5 bg-[#D2D4D3] shadow-md '>
-        <form onSubmit={submitHandler} className='flex flex-col space-y-5 lg:w-[400px] md:w-[18rem] w-[15rem]'>
+        <form method='POST' onSubmit={submitHandler} className='flex flex-col space-y-5 lg:w-[400px] md:w-[18rem] w-[15rem]'>
           <input
              type='text'
              onChange={handleChange}
@@ -71,9 +88,9 @@ const HomePage = ({ form, setForm, resp, setResp }) => {
              type='time'
              onChange={handleChange} 
              name='time'
-             required
+             required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
-             <button type='submit' id='submit-btn' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
+             <button type='submit' id='submit-btn' className='bg text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
         </form>
        </div>
       </div>

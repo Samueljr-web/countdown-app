@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 import { useCountdown } from '../hooks/useCountdown';
 import logo from '../icons/logo.svg';
 import facebook from '../icons/facebook.svg';
@@ -6,20 +7,17 @@ import twitter from '../icons/twitter.svg';
 import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
-// import axios from 'axios';
 
-export default function CounterPage ({ resp, form }) {
-  const {date,time,title} = resp
+function CounterPage ({respData}) {
+  const { date, time, title } = respData;
   const respDate = date;
   const respTime = time;
   const respTitle = title;
+   console.log(respDate + respTime + respTitle)
 
   const targetDate = new Date(`${respDate}, ${respTime}`);
 
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
-
-  console.log(resp);
-  console.log(form);
 
   if (days + hours + minutes + seconds <= 0) {
     return <ExpiredNotice />;
@@ -51,7 +49,7 @@ export default function CounterPage ({ resp, form }) {
         </div>
 
         <div id="button" className='mt-14'>
-          <button className='flex justify-center bg-white p-3 items-center border border-black rounded-md'><img className='mr-4' src={plus} alt="" /><span>Create Countdown</span></button>
+          <a href="/"><button className='flex justify-center bg-white p-3 items-center border border-black rounded-md'><img className='mr-4' src={plus} alt="" /><span>Create Countdown</span></button></a>
         </div>
 
       </div>
@@ -73,7 +71,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
     <div className='mr-8'>
-      <div className={`${isDanger ? 'danger' : ''} flex justify-center items-center xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 bg-green-600 text-center rounded-lg sm:text-6xl text-3xl text-white`}>
+      <div className={`${isDanger ? 'bg-red-500' : 'bg'} flex justify-center items-center xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 text-center rounded-lg sm:text-6xl text-3xl text-white`}>
         <p className=''>{value}</p>
       </div>
       <span className='mt-6 sm:text-2xl'>{type}</span>
@@ -89,3 +87,4 @@ const ExpiredNotice = () => {
     </div>
   );
 };
+export default CounterPage
