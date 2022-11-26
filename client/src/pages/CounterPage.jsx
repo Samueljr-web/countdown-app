@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { baseURL } from '../constants/'
+import { getURL } from '../constants/index.js'
 import { useCountdown } from '../hooks/useCountdown';
 import logo from '../icons/logo.svg';
 import facebook from '../icons/facebook.svg';
@@ -16,7 +16,7 @@ function CounterPage ({dataID, dataTitle}) {
   const [resp, setResp] = useState({});
 
   // use API call to get user inputted time and date.
-  axios.get(`${baseURL}/${dataID}/${dataTitle}`)
+  axios.get(`${getURL}${dataID}/${dataTitle}`)
   .then((response) => {
     setResp(response.data);
   })
