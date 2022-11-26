@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios'
 import Logo from '../assets/applogo.png'
@@ -6,7 +6,14 @@ import ClockBg from '../assets/clockbg.webp'
 
 const baseURL = 'https://lets-countdown-production.up.railway.app/api/v1/countdown/'
 
-const HomePage = ({ form, setForm, setResp }) => {
+const HomePage = () => {
+  const [form, setForm] = useState({
+    title: "",
+    date: "",
+    time: "",
+  });
+
+
    const handleChange = (e) => {
         setForm({
             ...form,
@@ -29,7 +36,6 @@ const HomePage = ({ form, setForm, setResp }) => {
           const hash = localStorage.getItem('hash')
           await axios.post(`${baseURL}` + hash, { ...form })
             .then((response) => {
-                setResp(response.data);
                 console.log(response.data);
                 toast.success("event created");
                  setTimeout(() => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // use API call to get user inputted time and date.
+ 
   useEffect(() => {
     const hash = Math.random().toString(36).substring(7);
     const hasher = localStorage.getItem("hash");
@@ -16,32 +17,13 @@ function App() {
     return;
   }, []);
 
-  const [form, setForm] = useState({
-    title: "",
-    date: "",
-    time: "",
-  });
-
-  const [resp, setResp] = useState({});
 
   return (
     <>
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                form={form}
-                setForm={setForm}
-                setResp={setResp}
-              />
-            }
-          />
-          <Route
-            path="/countdown"
-            element={<CounterPage resp={resp} form={form} />}
-          />
+          <Route path="/" element={ <HomePage />} />
+          <Route path="/countdown" element={<CounterPage />}/>
         </Routes>
       </Router>
     </>
