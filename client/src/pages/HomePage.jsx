@@ -6,8 +6,7 @@ import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
-
-function HomePage ({setRespData, respData}) {
+function HomePage ({setRespData, respData, dataID, dataTitle}) {
   const [form, setForm] = useState({
     title: "",
     date: "",
@@ -46,7 +45,8 @@ function HomePage ({setRespData, respData}) {
                 btn.innerHTML = 'Create countdown'
                 btn.disabled = false;
                 // window.location = "/countdown";
-                navigate('/countdown')
+                //chnaged here
+                navigate(`/${dataID}/${dataTitle}`)
               }, 1000)
              }).catch(err => {
                 toast.error('error creating event')
