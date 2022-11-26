@@ -6,12 +6,13 @@ import twitter from '../icons/twitter.svg';
 import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function CounterPage ({ resp, form }) {
-  const respDate = resp.date;
-  const respTime = resp.time;
-  const respTitle = resp.title;
+  const {date,time,title} = resp
+  const respDate = date;
+  const respTime = time;
+  const respTitle = title;
 
   const targetDate = new Date(`${respDate}, ${respTime}`);
 
