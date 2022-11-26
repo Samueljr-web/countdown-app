@@ -16,8 +16,8 @@ function App() {
   }, []);
   const [respData, setRespData] = useState({})
 
-  var ID = respData._id;
-  var title = respData.title;
+  let ID = `${respData._id}`;
+  let title = `${respData.title}`;
   console.log(ID);
   console.log(title)
 
@@ -26,7 +26,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={ <HomePage respData={respData} setRespData={setRespData} dataID={ID} dataTitle={title} />} />
-          <Route path={`/${ID}/${title}`} element={<CounterPage dataID={ID} dataTitle={title}/>}/>
+          <Route path="/:id/:title" element={<CounterPage dataID={ID} dataTitle={title}/>}/>
         </Routes>
       </Router>
     </>
