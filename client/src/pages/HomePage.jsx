@@ -1,17 +1,20 @@
 import React, {useState} from 'react'
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../constants/'
 import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
 
-const HomePage = ({setRespData, respData}) => {
+function HomePage ({setRespData, respData}) {
   const [form, setForm] = useState({
     title: "",
     date: "",
     time: "",
   });
+
+  const navigate = useNavigate();
 
 
    const handleChange = (e) => {
@@ -42,7 +45,8 @@ const HomePage = ({setRespData, respData}) => {
                  setTimeout(() => {
                 btn.innerHTML = 'Create countdown'
                 btn.disabled = false;
-                window.location = "/countdown";
+                // window.location = "/countdown";
+                navigate('/countdown')
               }, 1000)
              }).catch(err => {
                 toast.error('error creating event')

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React from 'react';
+// import axios from 'axios';
 import { useCountdown } from '../hooks/useCountdown';
 import logo from '../icons/logo.svg';
 import facebook from '../icons/facebook.svg';
@@ -8,14 +8,12 @@ import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
 
-export default function CounterPage ({respData}) {
-  const [resp, setResp] = useState({});
-  
-  const { date, time, title } = resp;
+function CounterPage ({respData}) {
+  const { date, time, title } = respData;
   const respDate = date;
   const respTime = time;
   const respTitle = title;
-  console.log(respData)
+   console.log(respDate + respTime + respTitle)
 
   const targetDate = new Date(`${respDate}, ${respTime}`);
 
@@ -89,3 +87,4 @@ const ExpiredNotice = () => {
     </div>
   );
 };
+export default CounterPage

@@ -22,7 +22,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={ <HomePage respData={respData} setRespData = {setRespData} />} />
+          <Route path="/" element={ <HomePage respData={respData} setRespData={setRespData} />} />
           <Route path="/countdown" element={<CounterPage respData={respData}/>}/>
         </Routes>
       </Router>
