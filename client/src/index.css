@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 
+
 body{
     font-family: 'Montserrat', sans-serif;
+}
+
+.bg{
+    background: linear-gradient(180deg, #4AC985 -77.78%, #1D844C 231.25%);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 }
