@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -16,14 +16,14 @@ function App() {
     }
     return;
   }, []);
-
+  const [respData, setRespData] = useState({})
 
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={ <HomePage />} />
-          <Route path="/countdown" element={<CounterPage />}/>
+          <Route path="/" element={ <HomePage respData={respData} setRespData = {setRespData} />} />
+          <Route path="/countdown" element={<CounterPage respData={respData}/>}/>
         </Routes>
       </Router>
     </>
