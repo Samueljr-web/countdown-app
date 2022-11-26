@@ -29,7 +29,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage form={form} setForm={setForm} resp={resp} setResp={setResp} />} />
+          <Route path="/" element={<HomePage form={form} setForm={setForm} setResp={setResp} />} />
           <Route
             path="/countdown"
             element={<CounterPage resp={resp} form={form} />}
