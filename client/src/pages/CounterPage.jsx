@@ -8,9 +8,8 @@ import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
 
-
 export default function CounterPage ({ resp, form }) {
-  const {date,time,title} = resp
+  const { date, time, title } = resp;
   const respDate = date;
   const respTime = time;
   const respTitle = title;
@@ -52,7 +51,7 @@ export default function CounterPage ({ resp, form }) {
         </div>
 
         <div id="button" className='mt-14'>
-          <button className='flex justify-center bg-white p-3 items-center border border-black rounded-md'><img className='mr-4' src={plus} alt="" /><span>Create Countdown</span></button>
+          <a href="/"><button className='flex justify-center bg-white p-3 items-center border border-black rounded-md'><img className='mr-4' src={plus} alt="" /><span>Create Countdown</span></button></a>
         </div>
 
       </div>
@@ -74,7 +73,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
     <div className='mr-8'>
-      <div className={`${isDanger ? 'danger' : ''} flex justify-center items-center xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 bg text-center rounded-lg sm:text-6xl text-3xl text-white`}>
+      <div className={`${isDanger ? 'bg-red-500' : 'bg'} flex justify-center items-center xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 text-center rounded-lg sm:text-6xl text-3xl text-white`}>
         <p className=''>{value}</p>
       </div>
       <span className='mt-6 sm:text-2xl'>{type}</span>

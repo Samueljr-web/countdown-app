@@ -6,7 +6,7 @@ import ClockBg from '../assets/clockbg.webp'
 
 const baseURL = 'https://lets-countdown-production.up.railway.app/api/v1/countdown/'
 
-const HomePage = ({ form, setForm, resp, setResp }) => {
+const HomePage = ({ form, setForm, setResp }) => {
    const handleChange = (e) => {
         setForm({
             ...form,

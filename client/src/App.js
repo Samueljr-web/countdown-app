@@ -34,7 +34,6 @@ function App() {
               <HomePage
                 form={form}
                 setForm={setForm}
-                resp={resp}
                 setResp={setResp}
               />
             }
