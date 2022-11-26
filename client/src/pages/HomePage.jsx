@@ -6,7 +6,7 @@ import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
 
-const HomePage = ({setRespData}) => {
+const HomePage = ({setRespData, respData}) => {
   const [form, setForm] = useState({
     title: "",
     date: "",
@@ -54,7 +54,7 @@ const HomePage = ({setRespData}) => {
             });
         }
     };
-
+    console.log(respData)
   return (
     <div className=''>
       <div>
