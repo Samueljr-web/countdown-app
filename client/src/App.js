@@ -21,13 +21,18 @@ function App() {
   }, []);
   const [respData, setRespData] = useState({})
 
-  var ID = respData._id;
-  var title = respData.title;
+  //test
+  // var ID = '663825e8ee0934fd3624c3b0';
+  // var title = 'eventer';
+  //end
+
+  var ID = `${respData._id}`;
+  var title = `${respData.title}`;
   console.log(ID);
   console.log(title)
 
   //test
-  axios.get("https://lets-countdown-production.up.railway.app/countdown/63824606e0934fd3624c3af3/title")
+  axios.get("https://lets-countdown-production.up.railway.app/api/v1/663825e8ee0934fd3624c3b0/eventer")
   .then((response) => {
     console.log(response.data);
   })
