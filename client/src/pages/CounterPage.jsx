@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 import { useCountdown } from '../hooks/useCountdown';
 import logo from '../icons/logo.svg';
 import facebook from '../icons/facebook.svg';
@@ -6,7 +7,7 @@ import twitter from '../icons/twitter.svg';
 import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
-// import axios from 'axios';
+
 
 export default function CounterPage ({ resp, form }) {
   const {date,time,title} = resp
@@ -73,7 +74,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
     <div className='mr-8'>
-      <div className={`${isDanger ? 'danger' : ''} flex justify-center items-center xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 bg-green-600 text-center rounded-lg sm:text-6xl text-3xl text-white`}>
+      <div className={`${isDanger ? 'danger' : ''} flex justify-center items-center xl:w-40 xl:h-48 lg:w-36 lg:h-44 md:w-28 md:h-36 sm:w-24 sm:h-36 w-14 h-24 bg text-center rounded-lg sm:text-6xl text-3xl text-white`}>
         <p className=''>{value}</p>
       </div>
       <span className='mt-6 sm:text-2xl'>{type}</span>
