@@ -6,7 +6,7 @@ import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
 
-const HomePage = () => {
+const HomePage = ({setRespData}) => {
   const [form, setForm] = useState({
     title: "",
     date: "",
@@ -37,6 +37,7 @@ const HomePage = () => {
           await axios.post(`${baseURL}countdown/` + hash, { ...form })
             .then((response) => {
                 console.log(response.data);
+                setRespData(response.data);
                 toast.success("event created");
                  setTimeout(() => {
                 btn.innerHTML = 'Create countdown'
