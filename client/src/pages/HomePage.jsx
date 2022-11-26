@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import { ToastContainer, toast } from "react-toastify";
+import { baseURL } from '../constants/'
 import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
-const baseURL = 'https://lets-countdown-production.up.railway.app/api/v1/countdown/'
 
 const HomePage = () => {
   const [form, setForm] = useState({
@@ -34,7 +34,7 @@ const HomePage = () => {
             return false;
         } else {
           const hash = localStorage.getItem('hash')
-          await axios.post(`${baseURL}` + hash, { ...form })
+          await axios.post(`${baseURL}countdown/` + hash, { ...form })
             .then((response) => {
                 console.log(response.data);
                 toast.success("event created");
