@@ -6,18 +6,16 @@ import ClockBg from '../assets/clockbg.webp'
 
 const baseURL = 'https://lets-countdown-production.up.railway.app/api/v1/countdown/'
 
-const HomePage = () => {
-    const [form, setForm] = useState({
-      title: "",
-      date: "",
-      time: ""
-    })
+const HomePage = ({ form, setForm, resp, setResp }) => {
    const handleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value,
         });
     };
+
+    console.log(resp);
+
      const submitHandler = async(e) => {
         const btn = document.getElementById('submit-btn')
         // setTimeout(() => {
@@ -33,7 +31,7 @@ const HomePage = () => {
           const hash = localStorage.getItem('hash')
          await axios.post(baseURL + hash, { ...form })
             .then((response) => {
-              console.log(response.data);
+              setResp(response.data);
             });
             toast.success("event created");
         }
@@ -70,7 +68,7 @@ const HomePage = () => {
              name='time'
              required
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
-          <button type='submit' id='submit-btn' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
+          <a href={`countdown`}><button type='submit' className='bg-[#4AC985] text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button></a>
         </form>
        </div>
       </div>
@@ -78,4 +76,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default HomePage;

@@ -6,9 +6,19 @@ import twitter from '../icons/twitter.svg';
 import whatsapp from '../icons/whatsapp.svg';
 import copy from '../icons/copy.svg';
 import plus from '../icons/plus.svg'
+import axios from 'axios';
 
-export default function CounterPage ({ targetDate }) {
+export default function CounterPage ({ resp, form }) {
+  const respDate = resp.date;
+  const respTime = resp.time;
+  const respTitle = resp.title;
+
+  const targetDate = new Date(`${respDate}, ${respTime}`);
+
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
+
+  console.log(resp);
+  console.log(form);
 
   if (days + hours + minutes + seconds <= 0) {
     return <ExpiredNotice />;
@@ -20,7 +30,7 @@ export default function CounterPage ({ targetDate }) {
         </nav>
 
         <div className='mt-2 py-6'>
-          <h1 className='sm:text-4xl text-3xl p-4'><span className='font-semibold'>HNG Graduation</span> is coming up in</h1>
+          <h1 className='sm:text-4xl text-3xl p-4'><span className='font-semibold'>{respTitle}</span> is coming up in</h1>
         </div>
 
         <div className=''>
