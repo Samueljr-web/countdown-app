@@ -1,12 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../constants/'
 import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
-const baseURL = 'https://lets-countdown-production.up.railway.app/api/v1/countdown/'
 
-const HomePage = ({ form, setForm, setResp }) => {
+function HomePage ({setRespData, respData, dataID, dataTitle}) {
+  const [form, setForm] = useState({
+    title: "",
+    date: "",
+    time: "",
+  });
+
+  const navigate = useNavigate();
+
+
    const handleChange = (e) => {
         setForm({
             ...form,
@@ -27,15 +37,16 @@ const HomePage = ({ form, setForm, setResp }) => {
             return false;
         } else {
           const hash = localStorage.getItem('hash')
-          await axios.post(`${baseURL}` + hash, { ...form })
+          await axios.post(`${baseURL}countdown/` + hash, { ...form })
             .then((response) => {
-                setResp(response.data);
                 console.log(response.data);
+                setRespData(response.data);
                 toast.success("event created");
                  setTimeout(() => {
                 btn.innerHTML = 'Create countdown'
                 btn.disabled = false;
-                window.location = "/countdown";
+                // window.location = "/countdown";
+                navigate(`/${dataID}/${dataTitle}`)
               }, 1000)
              }).catch(err => {
                 toast.error('error creating event')
@@ -47,7 +58,7 @@ const HomePage = ({ form, setForm, setResp }) => {
             });
         }
     };
-
+    console.log(respData)
   return (
     <div className=''>
       <div>
