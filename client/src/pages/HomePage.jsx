@@ -68,19 +68,29 @@ function HomePage ({setRespData}) {
          <h2 className='lg:text-[2rem] md:text-[1.5rem] text-[1.2rem] font-bold md:leading-[39px] leading-8'>Create countdowns for your events fast, easy and quick</h2>
        </div>
        <div className='flex flex-col justify-center rounded-[8px] h-[21rem] p-5 bg-[#D2D4D3] shadow-md '>
-        <form method='POST' onSubmit={submitHandler} className='flex flex-col space-y-5 lg:w-[400px] md:w-[18rem] w-[15rem]'>
+        <form method='POST' onSubmit={submitHandler} className='flex flex-col space-y-2 lg:w-[400px] md:w-[18rem] w-[15rem]'>
+         <label htmlFor='title'>Title:</label>
           <input
              type='text'
              onChange={handleChange}
              placeholder='Event name'
              name='title' 
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
+           <label htmlFor='date'>Date:</label>
           <input 
-             type='date'
+             type='text'
+             placeholder='dd/mm/yyyy'
              onChange={handleChange}  
+             onFocus={((e) =>{
+                e.currentTarget.type = 'date'
+             })}
+             onBlur={((e) =>{
+                e.currentTarget.type = 'text'
+             })}
              name='date'
              required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
+          <label htmlFor='time'>Time:</label>
           <input 
              type='time'
              onChange={handleChange} 
