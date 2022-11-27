@@ -46,7 +46,7 @@ function HomePage ({setRespData, respData, dataID, dataTitle}) {
                 btn.disabled = false;
                 // window.location = "/countdown";
                 //chnaged here
-                navigate(`/${dataID}/${dataTitle}`)
+                navigate(`/${response.data._id}/${response.data.title}`)
               }, 1000)
              }).catch(err => {
                 toast.error('error creating event')
