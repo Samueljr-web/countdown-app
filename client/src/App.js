@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import CounterPage from './pages/CounterPage';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFound from './pages/NotFound';
+
 function App() {
   useEffect(() => {
     const hash = Math.random().toString(36).substring(7);
@@ -18,24 +19,13 @@ function App() {
 
   let ID = `${respData._id}`;
   let title = `${respData.title}`;
-  console.log(ID);
-  console.log(title);
+
 
   return (
     <>
       <Router>
         <Routes>
-          <Route
-            path='/'
-            element={
-              <HomePage
-                respData={respData}
-                setRespData={setRespData}
-                dataID={ID}
-                dataTitle={title}
-              />
-            }
-          />
+          <Route path='/' element={<HomePage respData={respData} setRespData={setRespData} />} />
           <Route
             path='/:id/:eventTitle'
             element={<CounterPage dataID={ID} dataTitle={title} />}
