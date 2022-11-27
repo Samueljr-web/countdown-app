@@ -6,7 +6,7 @@ import axios from 'axios'
 import Logo from '../assets/applogo.png'
 import ClockBg from '../assets/clockbg.webp'
 
-function HomePage ({setRespData, respData, dataID, dataTitle}) {
+function HomePage ({setRespData}) {
   const [form, setForm] = useState({
     title: "",
     date: "",
@@ -38,15 +38,13 @@ function HomePage ({setRespData, respData, dataID, dataTitle}) {
           const hash = localStorage.getItem('hash')
           await axios.post(`${baseURL}countdown/` + hash, { ...form })
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 setRespData(response.data);
                 toast.success("event created");
                  setTimeout(() => {
                 btn.innerHTML = 'Create countdown'
                 btn.disabled = false;
-                // window.location = "/countdown";
-                //chnaged here
-                navigate(`/${dataID}/${dataTitle}`)
+                navigate(`/${response.data._id}/${response.data.title}`)
               }, 1000)
              }).catch(err => {
                 toast.error('error creating event')
@@ -58,7 +56,6 @@ function HomePage ({setRespData, respData, dataID, dataTitle}) {
             });
         }
     };
-    console.log(respData)
   return (
     <div className=''>
       <div>
@@ -79,15 +76,29 @@ function HomePage ({setRespData, respData, dataID, dataTitle}) {
              name='title' 
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
           <input 
-             type='date'
+             type='text'
+             placeholder='dd/mm/yyyy'
              onChange={handleChange}  
+             onFocus={((e) =>{
+                e.currentTarget.type = 'date'
+             })}
+             onBlur={((e) =>{
+                e.currentTarget.type = 'text'
+             })}
              name='date'
              required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
           <input 
-             type='time'
+             type='text'
+             placeholder='10:30'
              onChange={handleChange} 
              name='time'
+               onFocus={((e) =>{
+                e.currentTarget.type = 'time'
+             })}
+             onBlur={((e) =>{
+                e.currentTarget.type = 'text'
+             })}
              required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
              <button type='submit' id='submit-btn' className='bg text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
