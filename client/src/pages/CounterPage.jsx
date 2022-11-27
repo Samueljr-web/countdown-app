@@ -49,7 +49,7 @@ function CounterPage({ dataID, dataTitle }) {
   } else {
     return (
       <div className='text-center flex flex-col justify-center items-center w-full h-full'>
-        <nav className='flex justify-start pt-5 pl-5 pb-4 w-full'>
+        <nav className='flex justify-start pt-5 pl-5 pb-4 lg:pb-0 w-full'>
           <img src={logo} alt='' />
         </nav>
 
@@ -58,7 +58,7 @@ function CounterPage({ dataID, dataTitle }) {
         ) : (
           <>
             <div className='mt-2 py-6'>
-              <h1 className='sm:text-4xl text-3xl p-4'>
+              <h1 className='sm:text-4xl text-3xl p-4 lg:py-0'>
                 <span className='font-semibold'>{respTitle}</span> is coming up
                 in
               </h1>
@@ -70,7 +70,6 @@ function CounterPage({ dataID, dataTitle }) {
                 hours={hours}
                 minutes={minutes}
                 seconds={seconds}
-                j
               />
             </div>
 
