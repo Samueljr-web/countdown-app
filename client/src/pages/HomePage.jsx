@@ -76,29 +76,15 @@ function HomePage ({setRespData}) {
              name='title' 
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
           <input 
-             type='text'
-             placeholder='dd/mm/yyyy'
+             type='date'
              onChange={handleChange}  
-             onFocus={((e) =>{
-                e.currentTarget.type = 'date'
-             })}
-             onBlur={((e) =>{
-                e.currentTarget.type = 'text'
-             })}
              name='date'
              required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
           <input 
-             type='text'
-             placeholder='10:30'
+             type='time'
              onChange={handleChange} 
              name='time'
-               onFocus={((e) =>{
-                e.currentTarget.type = 'time'
-             })}
-             onBlur={((e) =>{
-                e.currentTarget.type = 'text'
-             })}
              required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
              <button type='submit' id='submit-btn' className='bg text-white  p-2 w-full rounded-[7px] outline-none'>Create countdown</button>
