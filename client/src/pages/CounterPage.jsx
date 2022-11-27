@@ -16,7 +16,7 @@ function CounterPage({ dataID, dataTitle }) {
   console.log(dataID);
   console.log(dataTitle);
   const [resp, setResp] = useState({});
-  const [isLoading, setIsLoading] = useState(fasle);
+  const [isLoading, setIsLoading] = useState(false);
   const { id, eventTitle } = useParams();
   // use API call to get user inputted time and date.
 
@@ -70,7 +70,6 @@ function CounterPage({ dataID, dataTitle }) {
                 hours={hours}
                 minutes={minutes}
                 seconds={seconds}
-                j
               />
             </div>
 
