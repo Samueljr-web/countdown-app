@@ -78,15 +78,8 @@ function HomePage ({setRespData}) {
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>
            <label htmlFor='date'>Date:</label>
           <input 
-             type='text'
-             placeholder='dd/mm/yyyy'
+             type='date'
              onChange={handleChange}  
-             onFocus={((e) =>{
-                e.currentTarget.type = 'date'
-             })}
-             onBlur={((e) =>{
-                e.currentTarget.type = 'text'
-             })}
              name='date'
              required={true}
              className='border-2 border-[rgba(0, 0, 0, 0.5)] rounded-[7px] outline-none p-2 w-full'/>

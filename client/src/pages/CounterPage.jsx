@@ -12,9 +12,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader.jsx';
 
-function CounterPage({ dataID, dataTitle }) {
-  console.log(dataID);
-  console.log(dataTitle);
+function CounterPage() {
   const [resp, setResp] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { id, eventTitle } = useParams();
@@ -31,14 +29,17 @@ function CounterPage({ dataID, dataTitle }) {
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => setIsLoading(false));
+        setTimeout(() => {
+           setIsLoading(false)
+        }, 2000);
+        
     }
   }, [id, eventTitle]);
   const { date, time, title } = resp;
   const respDate = date;
   const respTime = time;
   const respTitle = title;
-  console.log(respDate + respTime + respTitle);
+
 
   const targetDate = new Date(`${respDate}, ${respTime}`);
 
