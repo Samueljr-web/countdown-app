@@ -38,7 +38,7 @@ function HomePage({ setRespData }) {
     } else {
       const hash = localStorage.getItem("hash");
       await axios
-        .post(`${baseURL}countdown/` + hash, { ...form })
+        .post(`/${baseURL}/api/v1/countdown/` + hash, { ...form })
         .then((response) => {
           // console.log(response.data);
           setRespData(response.data);
